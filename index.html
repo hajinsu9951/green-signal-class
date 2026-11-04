@@ -6,6 +6,7 @@
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
+<meta charset="utf-8">
 <title>그린 시그널 수업실</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -149,7 +150,7 @@ button{font:inherit;color:inherit}
 .callout.warn{background:var(--bad-soft)}
 .callout.warn .ct{color:var(--bad)}
 .question-big{font-family:var(--f-display);font-size:clamp(1.5rem,3.6vw,2rem);line-height:1.35;color:var(--th);text-wrap:balance}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:12px}
 .stat{border-top:3px solid var(--th);padding-top:10px}
 .stat .n{font-family:var(--f-display);font-size:2.4rem;line-height:1.1;color:var(--th)}
 .stat .l{font-weight:700;line-height:1.4}
@@ -189,7 +190,7 @@ button{font:inherit;color:inherit}
 .act{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:12px}
 .act>.ah{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
 .act>.ah .k{font-size:.72rem;font-weight:700;letter-spacing:.06em;color:var(--go-ink);background:var(--th);border-radius:4px;padding:2px 8px}
-.act>.ah .q{font-weight:700;flex:1;min-width:0}
+.act>.ah .q{font-weight:700;flex:1 1 15em;min-width:0}
 .act .fb{font-size:.93rem;border-radius:8px;padding:10px 12px;line-height:1.55}
 .act .fb.ok{background:var(--ok-soft);color:var(--ok)}
 .act .fb.bad{background:var(--bad-soft);color:var(--bad)}
@@ -392,7 +393,7 @@ body,h1,h2,h3,h4,p,li,button,small,span,b,label,td,th,figcaption{word-break:keep
 /* guide box reads top-down on narrow screens */
 .guide>div{font-size:.95rem}
 @media (max-width:860px){.guide{grid-template-columns:1fr}.guide>div{display:grid;grid-template-columns:6.5em 1fr;gap:10px;align-items:start}.guide>div>span{margin:2px 0 0}}
-@media (max-width:420px){.guide>div{grid-template-columns:1fr;gap:2px}}
+@media (max-width:560px){.guide>div{grid-template-columns:1fr;gap:2px}}
 /* top bar: two rows on phones, scene picker on tablet/phone */
 .topbar .tools{display:flex;gap:6px;align-items:center;flex-wrap:nowrap}
 .scene-pick{display:none;max-width:100%;font:inherit;font-size:.9rem;padding:6px 10px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
@@ -422,7 +423,33 @@ body,h1,h2,h3,h4,p,li,button,small,span,b,label,td,th,figcaption{word-break:keep
 /* wrap-up scene: reflect and next-steps in balanced columns */
 .more{grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr))}
 .more img{aspect-ratio:4/3}
-@media (min-width:1000px){.wrapup{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}.wrapup>.full{grid-column:1/-1}}
+.sec{font-size:1.15rem;margin:10px 0 -4px;padding-top:14px;border-top:2px solid var(--line);color:var(--th);display:flex;align-items:center;gap:8px}
+.sec::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--th)}
+.visual.compact img{max-height:300px}
+/* scene intro: guide beside the picture on PCs */
+.intro{display:flex;flex-direction:column;gap:14px}
+@media (min-width:1000px){
+  .intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
+  .intro>.guide{grid-template-columns:1fr;height:100%}
+  .intro>.guide>div{display:grid;grid-template-columns:7em 1fr;gap:10px;align-items:start}
+  .intro>.guide>div>span{margin:2px 0 0}
+  .intro .visual img{max-height:360px}
+}
+/* media row: videos and tools as compact cards */
+.media-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:14px;align-items:start}
+.media-row[data-n="1"]>.video{max-width:440px}
+.media-row>.tool{grid-column:1/-1}
+.media-row .vlabel{font-size:.85rem;padding:20px 10px 8px}
+.media-row .vplay{transform:scale(.8)}
+.media-row .video figcaption{font-size:.85rem;padding:8px 12px}
+.act .video,.reveal .video{max-width:440px}
+.visual img{max-height:min(46vh,420px)}
+.slideview .sv-img{display:flex;justify-content:center;background:var(--sunk);border-radius:8px}
+.slideview .sv-img img{max-height:min(52vh,420px);width:auto;max-width:100%}
+.sstrip img{width:72px;height:41px}
+.slideview .sv-img img{max-height:min(60vh,540px);object-fit:contain}
+.slideview .sstrip:has(button:only-child){display:none}
+.blocks>.row:has(.timer){justify-content:flex-end;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 6px 4px 16px;align-self:flex-start}
 /* record sheet */
 .finish{gap:18px}
 .finish .who{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
@@ -472,9 +499,10 @@ window.GS = (function(){
     climate:{name:'기후변화', tag:'옛 기록과 관측 자료로 변화를 확인한다'},
     eco:{name:'생태계', tag:'생물다양성과 그 연결을 지킨다'}
   };
-  const lessons = [], widgets = {}, historyMap = {}, worksheetMap = {};
+  const lessons = [], widgets = {}, historyMap = {}, worksheetMap = {}, photoMap = {};
   function lesson(d){ lessons.push(d); }
   function history(m){ Object.assign(historyMap, m); }
+  function photos(m){ Object.assign(photoMap, m); }
   function worksheets(m){ Object.assign(worksheetMap, m); }
   function widget(name, fn){ widgets[name] = fn; }
 
@@ -740,7 +768,7 @@ window.GS = (function(){
   };
   R.gallery = b => el('div',{}, b.title?el('h3',{style:'font-size:1.1rem;margin-bottom:8px',html:b.title}):null,
     el('div',{class:'gallery'}, b.items.map(i=>el('button',{type:'button','aria-label':(i.cap||'슬라이드')+' 크게 보기',onclick:()=>lightbox(i.src,i.cap)}, el('img',{src:i.src,alt:i.cap||'',loading:'lazy'})))));
-  R.more = b => el('div',{}, el('h3',{style:'font-size:1.3rem;margin-bottom:12px',html:b.title||'더 나아가기'}),
+  R.more = b => el('div',{}, el('h3',{class:'sec',style:'margin-bottom:12px',html:b.title||'더 나아가기'}),
     el('div',{class:'more'}, b.items.map(i=>{
       const body = [el('img',{src:i.img,alt:'',loading:'lazy'}), el('div',{class:'mb'}, i.tag?el('span',{class:'k',html:i.tag}):null, el('b',{html:i.title}), i.text?el('small',{html:i.text}):null)];
       return i.url ? el('a',{href:i.url,target:'_blank',rel:'noopener'}, body) : el('div',{class:'m'}, body);
@@ -844,7 +872,7 @@ window.GS = (function(){
 
   R.history = b => el('div',{class:'history'}, (b.items||[]).map(i=>el('figure',{},
     el('img',{src:i.src,alt:i.alt||i.title||'',loading:'lazy',onclick:()=>lightbox(i.src,i.alt)}),
-    el('figcaption',{}, el('b',{html:i.title}), i.fact?el('span',{html:i.fact}):null, i.credit?el('small',{html:i.credit}):null))));
+    el('figcaption',{}, el('b',{html:i.title}), i.fact?el('span',{html:i.fact}):null, i.credit?el('small',{}, el('span',{html:i.credit}), i.url?el('a',{href:i.url,target:'_blank',rel:'noopener',style:'margin-left:6px;color:var(--th)'},'원본 ↗'):null):null))));
 
   /* ---- embedded media ---- */
   const resMap = {};
@@ -855,7 +883,7 @@ window.GS = (function(){
       el('img',{src:'https://i.ytimg.com/vi/'+b.yt+'/hqdefault.jpg',alt:'',loading:'lazy'}), el('span',{class:'vplay','aria-hidden':'true'}), el('span',{class:'vlabel'}, b.title||'수업 영상')));
     return el('figure',{class:'video'}, vbox,
     el('figcaption',{}, el('span',{class:'k'},'영상'), el('b',{html:b.title||'수업 영상'}), b.note?el('small',{html:b.note}):null,
-      el('a',{href:'https://www.youtube.com/watch?v='+b.yt,target:'_blank',rel:'noopener'},'유튜브에서 열기 ↗'))); };
+      el('a',{href:'https://www.youtube.com/watch?v='+b.yt+(b.start?'&t='+b.start+'s':''),target:'_blank',rel:'noopener'},'유튜브에서 열기 ↗'))); };
   R.videos = b => el('div',{class:'vgrid'}, (b.items||[]).map(v=>R.video(v)));
   R.tool = b => {
     const head = el('div',{class:'tool-h'}, b.img?el('img',{src:b.img,alt:'',loading:'lazy'}):null,
@@ -868,19 +896,23 @@ window.GS = (function(){
   R.slides = (b, st, L) => {
     const total = (resMap[L.id]||{}).slides || 1;
     const from = Math.max(1, b.from||1), to = Math.min(total, b.to||total);
-    let k = from;
+    // the scene picture already shows slide b.skip, so the viewer leaves it out
+    const list = []; for(let n=from;n<=to;n++) if(n!==b.skip) list.push(n);
+    if(!list.length) return el('div',{hidden:true});
+    let k = list[0];
     const pad = n => 'slides/'+L.id+'/s'+String(n).padStart(2,'0')+'.jpg';
     const img = el('img',{alt:'수업 PPT 슬라이드',src:pad(k),onclick:()=>lightbox(img.src,'슬라이드')});
     const cnt = el('span',{class:'num'});
     const strip = el('div',{class:'sstrip'});
-    const go = n => { k = Math.min(to, Math.max(from, n)); img.src = pad(k); cnt.textContent = k+' / '+total; strip.querySelectorAll('button').forEach(x=>x.classList.toggle('cur', +x.dataset.n===k)); };
-    for(let n=from;n<=to;n++) strip.append(el('button',{type:'button','data-n':String(n),'aria-label':n+'번 슬라이드',onclick:()=>go(n)}, el('img',{src:pad(n),alt:'',loading:'lazy'})));
-    const box = el('div',{class:'slideview',tabindex:'0',onkeydown:e=>{ if(e.key==='ArrowRight') go(k+1); if(e.key==='ArrowLeft') go(k-1); }},
+    const go = n => { k = list[Math.min(list.length-1, Math.max(0, n))]; img.src = pad(k); cnt.textContent = k+' / '+total; strip.querySelectorAll('button').forEach(x=>x.classList.toggle('cur', +x.dataset.n===k)); };
+    list.forEach((n,i)=>strip.append(el('button',{type:'button','data-n':String(n),'aria-label':n+'번 슬라이드',onclick:()=>go(i)}, el('img',{src:pad(n),alt:'',loading:'lazy'}))));
+    const at = () => list.indexOf(k);
+    const box = el('div',{class:'slideview',tabindex:'0',onkeydown:e=>{ if(e.key==='ArrowRight') go(at()+1); if(e.key==='ArrowLeft') go(at()-1); }},
       el('div',{class:'sv-h'}, el('span',{class:'k'},'수업 PPT'), el('b',{html:b.title||'선생님 PPT 함께 보기'}), cnt),
       el('div',{class:'sv-img'}, img),
-      el('div',{class:'row'}, el('button',{type:'button',class:'btn sm',onclick:()=>go(k-1)},'← 앞'), el('button',{type:'button',class:'btn sm pri',onclick:()=>go(k+1)},'뒤 →')),
+      el('div',{class:'row'}, el('button',{type:'button',class:'btn sm',onclick:()=>go(at()-1)},'← 앞'), el('button',{type:'button',class:'btn sm pri',onclick:()=>go(at()+1)},'뒤 →')),
       strip);
-    go(k);
+    go(0);
     return box;
   };
   /* tag every activity with its workbook number */
@@ -928,9 +960,11 @@ window.GS = (function(){
     ]);
   }
 
-  return {THEMES, lessons, widgets, historyMap, worksheetMap, resMap, lesson, widget, history, worksheets, resources, store, el, match, chart, renderBlock:(b,st,L)=>renderBlock(b,st,L), R, lightbox, docx};
+  return {THEMES, lessons, widgets, historyMap, worksheetMap, photoMap, resMap, lesson, widget, history, photos, worksheets, resources, store, el, match, chart, renderBlock:(b,st,L)=>renderBlock(b,st,L), R, lightbox, docx};
 })();
 </script>
+<script src="lessons/labs.js"></script>
+<script src="lessons/photos.js"></script>
 <script src="lessons/carbon.js"></script>
 <script src="lessons/climate.js"></script>
 <script src="lessons/eco.js"></script>
@@ -953,6 +987,8 @@ window.GS = (function(){
       L.goals && L.goals.length ? {t:'html', html:'<h3 style="font-size:1.2rem;margin-bottom:6px">학습 목표</h3><ul class="goals">'+L.goals.map(g=>'<li>'+g+'</li>').join('')+'</ul>'} : null,
       hist(L) ? {t:'html', html:'<h3 style="font-size:1.3rem;margin-bottom:2px">역사와 현실 속 장면</h3><p class="lead2">오늘 수업은 실제로 있었던 일에서 출발해요.</p>'} : null,
       hist(L) ? {t:'history', items:hist(L)} : null,
+      (GS.photoMap[L.id]||[]).length ? {t:'html', html:'<h3 style="font-size:1.3rem;margin-bottom:2px">실제 사진으로 보기</h3><p class="lead2">오늘 다룰 대상을 실제 사진으로 먼저 만나요. 사진을 누르면 크게 보여요.</p>'} : null,
+      (GS.photoMap[L.id]||[]).length ? {t:'history', items:GS.photoMap[L.id]} : null,
       {t:'html', html:'<h3 style="font-size:1.3rem;margin-bottom:2px">오늘 수업의 길</h3><p class="lead2">장면을 누르면 바로 갈 수 있어요. 앞 장면에서 알게 된 것이 다음 장면의 근거가 됩니다.</p>'},
       {t:'flowmap'},
       {t:'callout', tone:'', title:'이렇게 진행해요', text:'정답보다 <b>내 생각과 근거</b>가 먼저예요. 예측을 적어야 자료가 열리고, 한 모든 활동은 <b>내 학습지</b> 한 장에 기록돼요. 지도안·활동지·PPT·영상은 위쪽 <b>자료실</b>에 있어요.'},
@@ -1137,10 +1173,18 @@ window.GS = (function(){
           el('h2',{html:s.title}));
         stage.append(head);
         const bl = el('div',{class:'blocks'});
+        let secShown=false;
         s.blocks.forEach((b,bi)=>{ if(!b) return;
+          if(b.t==='reflect' && !secShown){ secShown=true; bl.append(el('h3',{class:'sec'},'정리하기')); }
           if(b.t==='flowmap'){ bl.append(flowmap()); return; }
           if(b.t==='download'){ bl.append(downloads()); return; }
-          if(b.id==null && ['choice','blanks','ox','sort','write','tablefill','predict','cer','stw','reflect'].includes(b.t)) b.id = s.id+'-'+bi; bl.append(renderBlock(b, st, L)); });
+          if(b.t==='slides' && s.visual){ const m = String(s.visual.src||'').match(/slides\/[^/]+\/s(\d+)\.jpg/); if(m) b.skip = +m[1]; }
+          if(b.id==null && ['choice','blanks','ox','sort','write','tablefill','predict','cer','stw','reflect'].includes(b.t)) b.id = s.id+'-'+bi;
+          if(['video','videos','tool'].includes(b.t)){
+            let mr = bl.lastElementChild; if(!mr || !mr.classList.contains('media-row')){ mr = el('div',{class:'media-row'}); bl.append(mr); }
+            (b.t==='videos' ? (b.items||[]).map(v=>R.video(v)) : [renderBlock(b, st, L)]).forEach(x=>mr.append(x));
+            mr.dataset.n = mr.children.length; return; }
+          bl.append(renderBlock(b, st, L)); });
         const top = el('div',{class:'scene-body'});
         if(s.prompt) top.append(R.prompt({text:s.prompt}));
         if(s.purpose || s.how || s.outcome) top.append(el('div',{class:'guide'},
@@ -1154,13 +1198,16 @@ window.GS = (function(){
           T.link?el('div',{}, el('b',{},'이전·다음 연결 '), T.link):null)); }
         if(s.lead) bl.prepend(el('p',{class:'lead2',html:s.lead}));
         // wrap-up scenes: reflection beside the claim, next-steps thumbnails full width
-        if(s.blocks.some(b=>b&&b.t==='more')){ bl.classList.add('wrapup'); [...bl.children].forEach(c=>{ if(c.querySelector&&(c.querySelector('.more')||c.classList.contains('more')||c.querySelector('.video,.slideview,.tool,.tbl'))) c.classList.add('full'); }); }
+        // section headings so a scene reads 활동 → 정리하기 → 더 나아가기 in order
         const wide = s.blocks.some(b=>b&&(['tablefill','widget','slides','sort','video','tool'].includes(b.t)||(b.t==='predict'&&(b.reveal||[]).some(x=>x&&['widget','tablefill','chart'].includes(x.t)))));
         stage.append(top);
         if(s.visual){
           const vis = R.visual(s.visual);
-          // wide activities need the full column; otherwise picture sits beside the work on PCs
-          if(!wide) stage.append(el('div',{class:'scene-split'}, el('div',{class:'vis-col'}, vis), bl));
+          if(s.blocks.some(b=>b&&b.t==='slides')) vis.classList.add('compact');
+          const g = top.querySelector('.guide');
+          // wide activities need the full column, so the picture moves up beside the guide; otherwise it sits beside the work
+          if(wide && g){ const ib = el('div',{class:'intro'}); g.before(ib); ib.append(g, vis); stage.append(bl); }
+          else if(!wide) stage.append(el('div',{class:'scene-split'}, el('div',{class:'vis-col'}, vis), bl));
           else stage.append(el('div',{class:'scene-body'}, vis, bl));
         } else stage.append(bl);
       }

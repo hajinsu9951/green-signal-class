@@ -97,9 +97,16 @@ GS.resources({
     "note": "PPT 4쪽 QR"
    },
    {
-    "yt": "W3ffU8_utqM",
-    "title": "그린워싱 영상 1",
-    "note": "PPT 13쪽 QR"
+    "yt": "WdXAWkUQCRs",
+    "start": 1360,
+    "title": "수학 개념 ① 벡터의 내적 (EBSi 공식)",
+    "note": "기하와벡터 12강 · 22:40부터"
+   },
+   {
+    "yt": "C92uxVqawto",
+    "start": 164,
+    "title": "수학 개념 ② 두 벡터가 이루는 각 (EBSi 공식)",
+    "note": "기하와벡터 13강 · 2:44부터"
    },
    {
     "yt": "Gx-YnBy62TI",
